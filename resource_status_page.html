@@ -1,0 +1,315 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Resource Status - Dashboard Component</title>
+    <meta name="description" content="Wildfire Intel Dashboard Component - Fire Statistics">
+    <meta name="author" content="SitePoint">
+
+    <!-- ChartJS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css">
+
+    <link rel="stylesheet"
+        href="https://s3-us-west-1.amazonaws.com/patterns.esri.com/files/calcite-web/1.2.5/css/calcite-web.min.css">
+    <style>
+        hr{
+        padding: 0px;
+        margin: 0px;
+        }
+        #grid-container{
+            min-height: 100%;
+        }
+        h5{
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        #hidden{
+            display: none;
+        }
+        th{
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="grid-container leader-0">
+        <div class='column-24'>
+            <h5><i class="icon-ui-table"></i>Ground Resources<i class="fa-solid fa-clipboard"></i></h5>
+            <div class="loader is-active" >
+                <div class="loader-bars"></div>
+            </div>
+            <div class="overflow-auto">
+                <table class="table table-striped trailer-0">
+                    <thead>
+                        <tr class="font-size--3">
+                            <th class="text-center" rowspan="2">Region</th>
+                            <th class="text-center" colspan="2" scope="colgroup">Available in Region</th>
+                            <th class="text-center" colspan="2" scope="colgroup">Available out of Region</th>
+                        </tr>
+                        <tr class="font-size--3">
+                            <th scope="col">Engines</th>
+                            <th scope="col">Crews</th>
+                            <th scope="col">Engines</th>
+                            <th scope="col">Crews</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="font-size--3">
+                            <th scope="row"><strong>Northeast</strong></th>
+                            <td class="text-center" id="westside_responses">---</td>
+                            <td class="text-center" id="westside_acres">---</td>
+                            <td class="text-center" id="westside_dnr_responses">---</td>
+                            <td class="text-center" id="westside_dnr_acres">---</td>
+                        </tr>
+                        <tr class="font-size--3">
+                            <th scope="row"><strong>Southeast</strong></th>
+                            <td class="text-center" id="eastside_responses">---</td>
+                            <td class="text-center" id="eastside_acres">---</td>
+                            <td class="text-center" id="eastside_dnr_responses">---</td>
+                            <td class="text-center" id="eastside_dnr_acres">---</td>
+                        </tr>
+                        <tr class="font-size--3">
+                            <th scope="row"><strong>Northwest</strong></th>
+                            <td class="text-center" id="westside_responses">---</td>
+                            <td class="text-center" id="westside_acres">---</td>
+                            <td class="text-center" id="westside_dnr_responses">---</td>
+                            <td class="text-center" id="westside_dnr_acres">---</td>
+                        </tr>
+                        <tr class="font-size--3">
+                            <th scope="row"><strong>Olympic</strong></th>
+                            <td class="text-center" id="eastside_responses">---</td>
+                            <td class="text-center" id="eastside_acres">---</td>
+                            <td class="text-center" id="eastside_dnr_responses">---</td>
+                            <td class="text-center" id="eastside_dnr_acres">---</td>
+                        </tr>
+                        <tr class="font-size--3">
+                            <th scope="row"><strong>South Puget</strong></th>
+                            <td class="text-center" id="westside_responses">---</td>
+                            <td class="text-center" id="westside_acres">---</td>
+                            <td class="text-center" id="westside_dnr_responses">---</td>
+                            <td class="text-center" id="westside_dnr_acres">---</td>
+                        </tr>
+                        <tr class="font-size--3">
+                            <th scope="row"><strong>Pacific Cascade</strong></th>
+                            <td class="text-center" id="eastside_responses">---</td>
+                            <td class="text-center" id="eastside_acres">---</td>
+                            <td class="text-center" id="eastside_dnr_responses">---</td>
+                            <td class="text-center" id="eastside_dnr_acres">---</td>
+                        </tr>
+                        <tr class="font-size--3">
+                            <th scope="row"><strong>Totals</strong></th>
+                            <td class="text-center" id="total_responses">---</td>
+                            <td class="text-center" id="total_acres">---</td>
+                            <td class="text-center" id="total_dnr_responses">---</td>
+                            <td class="text-center" id="total_dnr_acres">---</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <a class="font-size--3" href="https://www.dnr.wa.gov/FightingFire" target="_blank">Learn more about DNR's engines and crews <i class="icon-ui-link-external"></i></a>
+            </div>
+        </div>
+        <div class='column-24 leader-1'>
+            <hr>
+        </div>
+    </div>
+    <div class="grid-container leader-0">
+        <div class='column-24'>
+            <h5><i class="icon-ui-compass"></i>Aviation Resources</h5>
+            <div class="loader is-active" >
+                <div class="loader-bars"></div>
+            </div>
+            <div class="overflow-auto">
+                <table class="table table-striped trailer-0">
+                    <thead>
+                        <tr class="font-size--3">
+                            <th class="text-center">Location</th>
+                            <th class="text-center">Rotor</th>
+                            <th class="text-center">SEAT</th>
+                            <th class="text-center">Air Attack</th>
+                            <th class="text-center">LAT</th>
+                            <th class="text-center">VLAT</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="font-size--3">
+                            <th scope="row"><strong>Westside</strong></th>
+                            <td class="text-center" id="">---</td>
+                            <td class="text-center" id="">---</td>
+                            <td class="text-center" id="">---</td>
+                            <td class="text-center" id="">---</td>
+                            <td class="text-center" id="">---</td>
+                        </tr>
+                        <tr class="font-size--3">
+                            <th scope="row"><strong>Eastside</strong></th>
+                            <td class="text-center" id="">---</td>
+                            <td class="text-center" id="">---</td>
+                            <td class="text-center" id="">---</td>
+                            <td class="text-center" id="">---</td>
+                            <td class="text-center" id="">---</td>
+                        </tr>
+                        <tr class="font-size--3">
+                            <th scope="row"><strong>In GACC</strong></th>
+                            <td class="text-center" id="">---</td>
+                            <td class="text-center" id="">---</td>
+                            <td class="text-center" id="">---</td>
+                            <td class="text-center" id="">---</td>
+                            <td class="text-center" id="">---</td>
+                        </tr>
+                        <tr class="font-size--3">
+                            <th scope="row"><strong>Totals</strong></th>
+                            <td class="text-center" id="">---</td>
+                            <td class="text-center" id="">---</td>
+                            <td class="text-center" id="">---</td>
+                            <td class="text-center" id="">---</td>
+                            <td class="text-center" id="">---</td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+                <a class="font-size--3" href="https://www.dnr.wa.gov/Aviation" target="_blank">Learn more about DNR's aviation program <i class="icon-ui-link-external"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!--JQuery-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- Moment -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
+    <!--ChartJS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
+
+    <!-- Calcite Web -->
+    <script src="https://s3-us-west-1.amazonaws.com/patterns.esri.com/files/calcite-web/1.2.5/js/calcite-web.min.js"></script>
+    
+    <!-- Build Graphs -->
+    <script>
+        var defaultStart = new Date().getFullYear() + '-01-01'
+
+        function pretty_num(number, acres=false){
+            nf = Intl.NumberFormat();
+            if (acres){
+                return nf.format(Math.round(number)) + " ac."
+            } else {
+            return nf.format(Math.round(number));
+            }
+        }
+
+        function createFreqArray(anyArray) {
+            var freqMap = {};
+
+            anyArray.forEach(function (key) {
+                if (freqMap.hasOwnProperty(key)) {
+                    freqMap[key]++;
+                } else {
+                    freqMap[key] = 1;
+                }
+            });
+
+            return freqMap;
+        }
+
+        $.getJSON({
+            type: "GET",
+            async: true,
+            url: 'https://gis.dnr.wa.gov/site3/rest/services/Public_Wildfire/WADNR_PUBLIC_WD_WildFire_Data/MapServer/2/query?where=DSCVR_DT+%3E+DATE+%27' + defaultStart + '%27&outSR=4326&outFields=*&returnGeometry=false&f=pjson',
+            success: function (results) {
+                var westside_responses = 0;
+                var westside_acres = 0;
+                var eastside_responses = 0;
+                var eastside_acres = 0;
+                var westside_dnr_responses = 0;
+                var westside_dnr_acres = 0;
+                var eastside_dnr_responses = 0;
+                var eastside_dnr_acres = 0;
+                var fires = [];
+                var ac_dict = {};
+                var eastside_regions = ["NORTHEAST", "SOUTHEAST"];
+                for (i in results.features) {
+                    // basic summary calcs
+                    var region = results.features[i].attributes.REGION_NAME
+                    if (eastside_regions.includes(region)) {
+                        eastside_acres += results.features[i].attributes.ACRES_BURNED;       
+                        eastside_responses += 1
+                    } else {
+                        westside_acres += results.features[i].attributes.ACRES_BURNED;  
+                        westside_responses += 1
+                    }
+                    // dnr fire calcs
+                    if ((results.features[i].attributes.PROTECTION_TYPE != 'DNR Assist Other Agency' && results.features[i].attributes.FIREEVNT_CLASS_LABEL_NM == 'Classified')) {
+                        if (eastside_regions.includes(region)) {
+                            eastside_dnr_acres += results.features[i].attributes.ACRES_BURNED;       
+                            eastside_dnr_responses += 1
+                        } else {
+                            westside_dnr_acres += results.features[i].attributes.ACRES_BURNED;  
+                            westside_dnr_responses += 1
+                        }
+                        month = moment(results.features[i].attributes.DSCVR_DT).format('MMMM')
+                        prot_type = results.features[i].attributes.PROTECTION_TYPE
+                        acres = results.features[i].attributes.ACRES_BURNED
+                        county = results.features[i].attributes.COUNTY_LABEL_NM
+                        cause = results.features[i].attributes.FIREGCAUSE_LABEL_NM
+                        date_delta = moment().diff(moment(results.features[i].attributes.DSCVR_DT), 'days')
+                        fires.push([month, prot_type, acres, county, cause, date_delta])
+                        if (!ac_dict[month]) {
+                            ac_dict[month] = [];
+                        }
+                        ac_dict[month].push(acres);
+                    }
+                }
+                for (i in ac_dict) {
+                    ac_dict[i] = ac_dict[i].reduce(function (acc, val) { return acc + val; }, 0).toFixed(2)
+
+                }
+
+                months = []
+                causes = []
+                counties = []
+                for (i in fires) {
+                    months.push(fires[i][0])
+                    causes.push(fires[i][4])
+                }
+
+                mo = createFreqArray(months)
+                causes = createFreqArray(causes)
+
+                data = {
+                    datasets: [{
+                        backgroundColor: ["#a6cee3", "#1f78b4", "#b2df8a", "#33a02c", "#e31a1c", "#fb9a99", "#fdbf6f", "#ff7f00", "#cab2d6", "#6a3d9a"],
+                        data: Object.values(causes),
+                    }],
+                    labels: Object.keys(causes)
+                };
+
+
+                // set table text
+                // westside
+                $("#westside_responses").text(pretty_num(westside_responses));
+                $("#westside_acres").text(pretty_num(westside_acres, true));
+                $("#westside_dnr_responses").text(pretty_num(westside_dnr_responses));
+                $("#westside_dnr_acres").text(pretty_num(westside_dnr_acres, true));
+                // eastside
+                $("#eastside_responses").text(pretty_num(eastside_responses));
+                $("#eastside_acres").text(pretty_num(eastside_acres, true));
+                $("#eastside_dnr_responses").text(pretty_num(eastside_dnr_responses));
+                $("#eastside_dnr_acres").text(pretty_num(eastside_dnr_acres, true));
+                // all-totals
+                $("#total_responses").text(pretty_num(westside_responses+eastside_responses));
+                $("#total_acres").text(pretty_num(westside_acres+eastside_acres, true));
+                $("#total_dnr_responses").text(pretty_num(westside_responses+eastside_dnr_responses));
+                $("#total_dnr_acres").text(pretty_num(westside_dnr_acres+eastside_dnr_acres, true));
+                
+                $('.loader').removeClass("is-active");
+            }
+        });
+    </script>
+</body>
+
+</html>
