@@ -11,27 +11,33 @@
     <meta name="author" content="SitePoint">
 
     <!-- FontAwesomeIcons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Calcite Web -->
     <link rel="stylesheet"
         href="https://s3-us-west-1.amazonaws.com/patterns.esri.com/files/calcite-web/1.2.5/css/calcite-web.min.css">
     <style>
-        hr{
-        padding: 0px;
-        margin: 0px;
+        hr {
+            padding: 0px;
+            margin: 0px;
         }
-        #grid-container{
+
+        #grid-container {
             min-height: 100%;
         }
-        h5{
+
+        h5 {
             margin-top: 10px;
             font-weight: bold;
         }
-        #hidden{
+
+        #hidden {
             display: none;
         }
-        th{
+
+        th {
             font-weight: bold;
         }
     </style>
@@ -40,70 +46,93 @@
 
 <body>
     <div class="grid-container leader-1">
-                
-                <div class="column-24 trailer-quarter">
-                    <h4><strong>Latest DNR Situation Unit Products</strong></h4>
-                    <a href="/media/intel_docs/eirs_report_20210903_0600.pdf"
-                        class="btn btn-fill" target="_blank"
-                        rel='noreferrer' style="text-align: left;"><i class="icon-ui-documentation"></i> Intelligence Report <i
-                            class="icon-ui-arrow-right-circled right"></i></a>
-                </div>
-                <div class="column-24 trailer-quarter">
-                    <a href="/media/intel_docs/Weather-1September2021.pdf"
-                        class="btn btn-fill left" target="_blank"
-                        rel='noreferrer' style="text-align: left;"><i class="fas fa-cloud-sun text-white"></i> Fire Weather Briefing <i
-                            class="icon-ui-arrow-right-circled right"></i></a>
-                </div>
-                <div class="column-24 trailer-quarter">
-                    <a href="/media/intel_docs/FuelsWeeklyStatus_673ZSVA.pdf" class="btn btn-fill btn-left" target="_blank"rel='noreferrer' style="text-align: left;">
-                        <i class="fas fa-tree btn-blue"></i> 
-                        Fuels/Fire Danger Report 
-                        <i class="icon-ui-arrow-right-circled right"></i></a>
-                </div>
-                <div class="column-24 trailer-1">
-                    <a href="/media/intel_docs/FuelsWeeklyStatus_673ZSVA.pdf" class="btn btn-fill btn-left" target="_blank"rel='noreferrer' style="text-align: left;">
-                        <i class="fas fa-tree btn-blue"></i> 
-                        DNR Safety Report 
-                        <i class="icon-ui-arrow-right-circled right"></i></a>
-                </div>
-            <hr>
-            <div class="column-24">
-                <div class="column-6 font-size--3">
-                    <p class="font-size--1 trailer-quarter"><strong>Northwest Intel</strong></p>
-                    <a href="https://gacc.nifc.gov/nwcc/content/products/intelligence/MORNINGBRIEF.pdf" target="_blank"
-                        rel='noreferrer'>Morning Intelligence Report</a><br>
-                    <a href="https://gacc.nifc.gov/nwcc/content/products/intelligence/teams.pdf" target="_blank"
-                        rel='noreferrer'>Teams Status</a><br>
-                    <a href="https://gacc.nifc.gov/nwcc/content/products/intelligence/crews.pdf" target="_blank"
-                        rel='noreferrer'>Hotshot Crews Status</a><br>
-                    <a href="https://gacc.nifc.gov/nwcc/content/products/intelligence/Aviation.pdf" target="_blank"
-                        rel='noreferrer'>Aviation Report</a><br>
-                    <a href="https://gacc.nifc.gov/nwcc/content/products/intelligence/Aviation.pdf" target="_blank"
-                        rel='noreferrer'>Safety Report</a><br>
-                </div>
-                <div class='column-6 font-size--3 trailer-1'>
-                    <p class="font-size--1 trailer-quarter"><strong>National Intel</strong></p>
-                    <a href="https://www.nifc.gov/nicc/sitreprt.pdf" target="_blank" rel='noreferrer'>Incident Management
-                        Report</a><br>
-                    <a href="https://www.nifc.gov/nicc/logistics/teams/imt_rotate.pdf" target="_blank" rel='noreferrer'>Type 1 Teams
-                        Status</a><br>
-                    <a href="https://fsapps.nwcg.gov/afm/index.php" target="_blank" rel='noreferrer'>Large Incidents Map</a>
-                </div>
-                <p class="font-size--3">For a definition list of terms, click <a href="/static/docs/dashboard_definitions.pdf" target='_blank'
-                    rel='noreferrer'>here</a>.</p>
+        <div class="column-24 trailer-0">
+            <h4><strong>Latest DNR Situation Unit Products</strong></h4>
+        </div>
+        <div class="column-24 trailer-quarter">
+            <a id="intel-report" href="/" class="btn btn-fill" target="_blank"
+                rel='noreferrer' style="text-align: left;"><i class="icon-ui-documentation"></i> Intelligence Report <i
+                    class="icon-ui-arrow-right-circled right"></i></a>
+        </div>
+        <div class="column-24 trailer-quarter">
+            <a id="fire-weather-report" href="/media/intel_docs/Weather-1September2021.pdf" class="btn btn-fill left" target="_blank"
+                rel='noreferrer' style="text-align: left;"><i class="fas fa-cloud-sun text-white"></i> Fire Weather
+                Briefing <i class="icon-ui-arrow-right-circled right"></i></a>
+        </div>
+        <div class="column-24 trailer-quarter">
+            <a id="fuels-report" href="/media/intel_docs/FuelsWeeklyStatus_673ZSVA.pdf" class="btn btn-fill btn-left" target="_blank"
+                rel='noreferrer' style="text-align: left;">
+                <i class="fas fa-tree btn-blue"></i>
+                Fuels/Fire Danger Report
+                <i class="icon-ui-arrow-right-circled right"></i></a>
+        </div>
+        <div class="column-24 trailer-1">
+            <a id="safety-report" href="/media/intel_docs/FuelsWeeklyStatus_673ZSVA.pdf" class="btn btn-fill btn-left" target="_blank"
+                rel='noreferrer' style="text-align: left;">
+                <i class="fas fa-hard-hat btn-blue"></i>
+                DNR Safety Report
+                <i class="icon-ui-arrow-right-circled right"></i></a>
+        </div>
+        <hr>
+        <div class="column-24 trailer-1">
+            <div class="column-6 font-size--3">
+                <p class="font-size--1 trailer-quarter"><strong>Northwest Intel</strong></p>
+                <a href="https://gacc.nifc.gov/nwcc/content/products/intelligence/MORNINGBRIEF.pdf" target="_blank"
+                    rel='noreferrer'>Morning Intelligence Report</a><br>
+                <a href="https://gacc.nifc.gov/nwcc/content/products/intelligence/teams.pdf" target="_blank"
+                    rel='noreferrer'>Teams Status</a><br>
+                <a href="https://gacc.nifc.gov/nwcc/content/products/intelligence/crews.pdf" target="_blank"
+                    rel='noreferrer'>Hotshot Crews Status</a><br>
+                <a href="https://gacc.nifc.gov/nwcc/content/products/intelligence/Aviation.pdf" target="_blank"
+                    rel='noreferrer'>Aviation Report</a><br>
             </div>
-            
+            <div class='column-6 font-size--3 trailer-1'>
+                <p class="font-size--1 trailer-quarter"><strong>National Intel</strong></p>
+                <a href="https://www.nifc.gov/nicc/sitreprt.pdf" target="_blank" rel='noreferrer'>Incident Management
+                    Report</a><br>
+                <a href="https://www.nifc.gov/nicc/logistics/teams/imt_rotate.pdf" target="_blank" rel='noreferrer'>Type
+                    1 Teams
+                    Status</a><br>
+                <a href="https://fsapps.nwcg.gov/afm/index.php" target="_blank" rel='noreferrer'>Large Incidents Map</a>
+            </div>
+
+        </div>
+        <div class="column-24">
+            <p class="font-size--3">For a definition list of terms, click <a
+                    href="/static/docs/dashboard_definitions.pdf" target='_blank' rel='noreferrer'>here</a>.</p>
+        </div>
+
     </div>
 
     <!--JQuery-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<!-- Moment -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- Moment -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
 
-<!-- Calcite Web -->
-<script src="https://s3-us-west-1.amazonaws.com/patterns.esri.com/files/calcite-web/1.2.5/js/calcite-web.min.js"></script>
+    <!-- Calcite Web -->
+    <script
+        src="https://s3-us-west-1.amazonaws.com/patterns.esri.com/files/calcite-web/1.2.5/js/calcite-web.min.js"></script>
 
-    </body>
+    <script>
+        $.getJSON({
+            type: "GET",
+            async: true,
+            url: 'https://services.arcgis.com/4x406oNViizbGo13/ArcGIS/rest/services/survey123_4fc29e5507c64d55a0e992b4e4da16c0_stakeholder/FeatureServer/0/queryAttachments?objectIds=&globalIds=&definitionExpression=1%3D1&attachmentsDefinitionExpression=1%3D1&attachmentTypes=&size=&keywords=&resultOffset=&resultRecordCount=&returnUrl=true&f=pjson&token=',
+            success: function (results){
+                var attachment_list = results["attachmentGroups"][0]["attachmentInfos"];
+                var intel_report_url = attachment_list.filter(a => a.keywords == "dnr_intelligence_report")[0]['url'];
+                var fire_weather_briefing_url = attachment_list.filter(a => a.keywords == "fire_weather_briefing")[0]['url'];
+                var fuels_report_url = attachment_list.filter(a => a.keywords == "fuelsfire_danger_report")[0]['url'];
+                var safety_report_url = attachment_list.filter(a => a.keywords == "dnr_safety_report")[0]['url'];
+                $("#intel-report").attr("href", intel_report_url);
+                $("#fire-weather-report").attr("href", fire_weather_briefing_url);
+                $("#fuels-report").attr("href", fuels_report_url);
+                $("#safety-report").attr("href", safety_report_url);
+            }
+        });
+    </script>
 
-    </html>
+</body>
+
+</html>
