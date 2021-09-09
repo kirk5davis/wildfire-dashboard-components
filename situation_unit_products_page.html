@@ -19,9 +19,9 @@
     <link rel="stylesheet"
         href="https://s3-us-west-1.amazonaws.com/patterns.esri.com/files/calcite-web/1.2.5/css/calcite-web.min.css">
     <style>
-        hr {
-            padding: 0px;
-            margin: 0px;
+        hr{
+        padding: 0px;
+        margin: 0px;
         }
 
         #grid-container {
@@ -31,6 +31,10 @@
         h5 {
             margin-top: 10px;
             font-weight: bold;
+        }
+
+        .btn{
+            background-color: #33709E;
         }
 
         #hidden {
@@ -47,28 +51,38 @@
 <body>
     <div class="grid-container leader-1">
         <div class="column-24 trailer-0">
+            <h2><strong>DNR Wildfire Intel Dashboard</strong></h2>
+            <p class="font-size--1">
+                The <a href="https://www.dnr.wa.gov/" target="_blank">Washington DNR</a> fire dashboard is a situational awareness and decision support tool for state fire managers and the public. We made
+                this application open access to encourage public and other agency benefit and hope you find it useful!
+            </p>
+        </div>
+        <div class='column-24'>
+            <hr>
+        </div>
+        <div class="column-24 leader-quarter">
             <h4><strong>Latest DNR Situation Unit Products</strong></h4>
         </div>
         <div class="column-24 trailer-quarter">
-            <a id="intel-report" href="#" class="btn btn-fill" target="_blank"
-                rel='noreferrer' style="text-align: left;"><i class="icon-ui-documentation"></i> Intelligence Report <i
+            <a id="intel-report" href="#" class="btn btn-fill" target="_blank" rel='noreferrer'
+                style="text-align: left;"><i class="icon-ui-documentation"></i> Intelligence Report <i
                     class="icon-ui-arrow-right-circled right"></i></a>
         </div>
         <div class="column-24 trailer-quarter">
-            <a id="fire-weather-report" href="#" class="btn btn-fill left" target="_blank"
-                rel='noreferrer' style="text-align: left;"><i class="fas fa-cloud-sun text-white"></i> Fire Weather
+            <a id="fire-weather-report" href="#" class="btn btn-fill left" target="_blank" rel='noreferrer'
+                style="text-align: left; "><i class="fas fa-cloud-sun text-white"></i> Fire Weather
                 Briefing <i class="icon-ui-arrow-right-circled right"></i></a>
         </div>
         <div class="column-24 trailer-quarter">
-            <a id="fuels-report" href="#" class="btn btn-fill btn-left" target="_blank"
-                rel='noreferrer' style="text-align: left;">
+            <a id="fuels-report" href="#" class="btn btn-fill btn-left" target="_blank" rel='noreferrer'
+                style="text-align: left;">
                 <i class="fas fa-tree btn-blue"></i>
                 Fuels/Fire Danger Report
                 <i class="icon-ui-arrow-right-circled right"></i></a>
         </div>
         <div class="column-24 trailer-1">
-            <a id="safety-report" href="#" class="btn btn-fill btn-left" target="_blank"
-                rel='noreferrer' style="text-align: left;">
+            <a id="safety-report" href="#" class="btn btn-fill btn-left" target="_blank" rel='noreferrer'
+                style="text-align: left;">
                 <i class="fas fa-hard-hat btn-blue"></i>
                 DNR Safety Report
                 <i class="icon-ui-arrow-right-circled right"></i></a>
@@ -101,6 +115,17 @@
             <p class="font-size--3">For a definition list of terms, click <a
                     href="/static/docs/dashboard_definitions.pdf" target='_blank' rel='noreferrer'>here</a>.</p>
         </div>
+        <div class='column-24'>
+            <hr>
+        </div>
+        <div class="column-24 leader-quarter">
+            <h4><strong>Need Help?</strong></h4>
+            <p class="font-size--1">For help, feedback. or suggestions, please send us an email!</p>
+            <p class="font-size--3 text-light-grey">Disclaimer: The map data provided here are mostly from external sources (NIFC EGP, NOAA, NWCC, etc.), loaded here for
+            your convenience. As DNR does not own this data directly, we cannot promise 100% uptime or availability of each source's
+            data. Further, map data is for informational purposes only and should not be considered the only source for
+            decision-making. This application is focused specifically on WA DNR wildfire operations, utilize the NIFC Enterprise
+            Geospatial Portal (EGP) for more fire information inside of WA and nationally.</p>
 
     </div>
 
@@ -114,12 +139,13 @@
     <script
         src="https://s3-us-west-1.amazonaws.com/patterns.esri.com/files/calcite-web/1.2.5/js/calcite-web.min.js"></script>
 
+    <!-- Set attachment links -->
     <script>
         $.getJSON({
             type: "GET",
             async: true,
             url: 'https://services.arcgis.com/4x406oNViizbGo13/ArcGIS/rest/services/survey123_4fc29e5507c64d55a0e992b4e4da16c0_stakeholder/FeatureServer/0/queryAttachments?objectIds=&globalIds=&definitionExpression=1%3D1&attachmentsDefinitionExpression=1%3D1&attachmentTypes=&size=&keywords=&resultOffset=&resultRecordCount=&returnUrl=true&f=pjson&token=',
-            success: function (results){
+            success: function (results) {
                 var attachment_list = results["attachmentGroups"][0]["attachmentInfos"];
                 var intel_report_url = attachment_list.filter(a => a.keywords == "dnr_intelligence_report")[0]['url'];
                 var fire_weather_briefing_url = attachment_list.filter(a => a.keywords == "fire_weather_briefing")[0]['url'];

@@ -7,11 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Resource Status - Dashboard Component</title>
-    <meta name="description" content="Wildfire Intel Dashboard Component - Fire Statistics">
+    <meta name="description" content="Wildfire Intel Dashboard Component - Resource Status">
     <meta name="author" content="SitePoint">
-
-    <!-- ChartJS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css">
 
     <link rel="stylesheet"
         href="https://s3-us-west-1.amazonaws.com/patterns.esri.com/files/calcite-web/1.2.5/css/calcite-web.min.css">
@@ -62,52 +59,52 @@
                     <tbody>
                         <tr class="font-size--3">
                             <th scope="row"><strong>Northeast</strong></th>
-                            <td class="text-center" id="westside_responses">---</td>
-                            <td class="text-center" id="westside_acres">---</td>
-                            <td class="text-center" id="westside_dnr_responses">---</td>
-                            <td class="text-center" id="westside_dnr_acres">---</td>
+                            <td class="text-center" id="ne_engines_in_region">---</td>
+                            <td class="text-center" id="ne_crews_in_region">---</td>
+                            <td class="text-center" id="ne_engines_out_region">---</td>
+                            <td class="text-center" id="ne_crews_out_region">---</td>
                         </tr>
                         <tr class="font-size--3">
                             <th scope="row"><strong>Southeast</strong></th>
-                            <td class="text-center" id="eastside_responses">---</td>
-                            <td class="text-center" id="eastside_acres">---</td>
-                            <td class="text-center" id="eastside_dnr_responses">---</td>
-                            <td class="text-center" id="eastside_dnr_acres">---</td>
+                            <td class="text-center" id="se_engines_in_region">---</td>
+                            <td class="text-center" id="se_crews_in_region">---</td>
+                            <td class="text-center" id="se_engines_out_region">---</td>
+                            <td class="text-center" id="se_crews_out_region">---</td>
                         </tr>
                         <tr class="font-size--3">
                             <th scope="row"><strong>Northwest</strong></th>
-                            <td class="text-center" id="westside_responses">---</td>
-                            <td class="text-center" id="westside_acres">---</td>
-                            <td class="text-center" id="westside_dnr_responses">---</td>
-                            <td class="text-center" id="westside_dnr_acres">---</td>
+                            <td class="text-center" id="nw_engines_in_region">---</td>
+                            <td class="text-center" id="nw_crews_in_region">---</td>
+                            <td class="text-center" id="nw_engines_out_region">---</td>
+                            <td class="text-center" id="nw_crews_out_region">---</td>
                         </tr>
                         <tr class="font-size--3">
                             <th scope="row"><strong>Olympic</strong></th>
-                            <td class="text-center" id="eastside_responses">---</td>
-                            <td class="text-center" id="eastside_acres">---</td>
-                            <td class="text-center" id="eastside_dnr_responses">---</td>
-                            <td class="text-center" id="eastside_dnr_acres">---</td>
+                            <td class="text-center" id="oly_engines_in_region">---</td>
+                            <td class="text-center" id="oly_crews_in_region">---</td>
+                            <td class="text-center" id="oly_engines_out_region">---</td>
+                            <td class="text-center" id="oly_crews_out_region">---</td>
                         </tr>
                         <tr class="font-size--3">
                             <th scope="row"><strong>South Puget</strong></th>
-                            <td class="text-center" id="westside_responses">---</td>
-                            <td class="text-center" id="westside_acres">---</td>
-                            <td class="text-center" id="westside_dnr_responses">---</td>
-                            <td class="text-center" id="westside_dnr_acres">---</td>
+                            <td class="text-center" id="sps_engines_in_region">---</td>
+                            <td class="text-center" id="sps_crews_in_region">---</td>
+                            <td class="text-center" id="sps_engines_out_region">---</td>
+                            <td class="text-center" id="sps_crews_out_region">---</td>
                         </tr>
                         <tr class="font-size--3">
                             <th scope="row"><strong>Pacific Cascade</strong></th>
-                            <td class="text-center" id="eastside_responses">---</td>
-                            <td class="text-center" id="eastside_acres">---</td>
-                            <td class="text-center" id="eastside_dnr_responses">---</td>
-                            <td class="text-center" id="eastside_dnr_acres">---</td>
+                            <td class="text-center" id="pc_engines_in_region">---</td>
+                            <td class="text-center" id="pc_crews_in_region">---</td>
+                            <td class="text-center" id="pc_engines_out_region">---</td>
+                            <td class="text-center" id="pc_crews_out_region">---</td>
                         </tr>
                         <tr class="font-size--3">
                             <th scope="row"><strong>Totals</strong></th>
-                            <td class="text-center" id="total_responses">---</td>
-                            <td class="text-center" id="total_acres">---</td>
-                            <td class="text-center" id="total_dnr_responses">---</td>
-                            <td class="text-center" id="total_dnr_acres">---</td>
+                            <td class="text-center" id="total_engines_in_region">---</td>
+                            <td class="text-center" id="total_crews_in_region">---</td>
+                            <td class="text-center" id="total_engines_out_region">---</td>
+                            <td class="text-center" id="total_crews_out_region">---</td>
                         </tr>
                     </tbody>
                 </table>
@@ -139,17 +136,17 @@
                     <tbody>
                         <tr class="font-size--3">
                             <th scope="row"><strong>Westside</strong></th>
-                            <td class="text-center" id="">---</td>
-                            <td class="text-center" id="">---</td>
-                            <td class="text-center" id="">---</td>
+                            <td class="text-center" id="westside_helicopters">---</td>
+                            <td class="text-center" id="westside_seats">---</td>
+                            <td class="text-center" id="westside_air_attack_recon">---</td>
                             <td class="text-center" id="">---</td>
                             <td class="text-center" id="">---</td>
                         </tr>
                         <tr class="font-size--3">
                             <th scope="row"><strong>Eastside</strong></th>
-                            <td class="text-center" id="">---</td>
-                            <td class="text-center" id="">---</td>
-                            <td class="text-center" id="">---</td>
+                            <td class="text-center" id="eastside_helicopters">---</td>
+                            <td class="text-center" id="eastside_seats">---</td>
+                            <td class="text-center" id="eastside_air_attack_recon">---</td>
                             <td class="text-center" id="">---</td>
                             <td class="text-center" id="">---</td>
                         </tr>
@@ -158,16 +155,16 @@
                             <td class="text-center" id="">---</td>
                             <td class="text-center" id="">---</td>
                             <td class="text-center" id="">---</td>
-                            <td class="text-center" id="">---</td>
-                            <td class="text-center" id="">---</td>
+                            <td class="text-center" id="in_region_lats">---</td>
+                            <td class="text-center" id="in_region_vlats">---</td>
                         </tr>
                         <tr class="font-size--3">
                             <th scope="row"><strong>Totals</strong></th>
-                            <td class="text-center" id="">---</td>
-                            <td class="text-center" id="">---</td>
-                            <td class="text-center" id="">---</td>
-                            <td class="text-center" id="">---</td>
-                            <td class="text-center" id="">---</td>
+                            <td class="text-center" id="total_rotors">---</td>
+                            <td class="text-center" id="total_seats">---</td>
+                            <td class="text-center" id="total_air_attack_recon">---</td>
+                            <td class="text-center" id="total_in_region_lats">---</td>
+                            <td class="text-center" id="total_in_region_vlats">---</td>
                         </tr>
                         
                     </tbody>
@@ -182,133 +179,108 @@
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <!-- Moment -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
-    <!--ChartJS-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
 
     <!-- Calcite Web -->
     <script src="https://s3-us-west-1.amazonaws.com/patterns.esri.com/files/calcite-web/1.2.5/js/calcite-web.min.js"></script>
     
-    <!-- Build Graphs -->
+    <!-- Build Tables -->
     <script>
-        var defaultStart = new Date().getFullYear() + '-01-01'
 
-        function pretty_num(number, acres=false){
-            nf = Intl.NumberFormat();
-            if (acres){
-                return nf.format(Math.round(number)) + " ac."
-            } else {
-            return nf.format(Math.round(number));
+        Array.prototype.sum = function (prop) {
+            var total = 0
+            for ( var i = 0, _len = this.length; i < _len; i++ ) {
+                total += this[i]['attributes'][prop]
             }
+            return total
         }
 
-        function createFreqArray(anyArray) {
-            var freqMap = {};
-
-            anyArray.forEach(function (key) {
-                if (freqMap.hasOwnProperty(key)) {
-                    freqMap[key]++;
-                } else {
-                    freqMap[key] = 1;
-                }
-            });
-
-            return freqMap;
-        }
 
         $.getJSON({
             type: "GET",
             async: true,
-            url: 'https://gis.dnr.wa.gov/site3/rest/services/Public_Wildfire/WADNR_PUBLIC_WD_WildFire_Data/MapServer/2/query?where=DSCVR_DT+%3E+DATE+%27' + defaultStart + '%27&outSR=4326&outFields=*&returnGeometry=false&f=pjson',
+            url: 'https://services.arcgis.com/4x406oNViizbGo13/ArcGIS/rest/services/survey123_c8dec8f0f7354a99a2e228f118f2eee7_stakeholder/FeatureServer/0/query?where=1%3D1&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&returnGeodetic=false&outFields=*&returnGeometry=false&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pjson&token=',
             success: function (results) {
-                var westside_responses = 0;
-                var westside_acres = 0;
-                var eastside_responses = 0;
-                var eastside_acres = 0;
-                var westside_dnr_responses = 0;
-                var westside_dnr_acres = 0;
-                var eastside_dnr_responses = 0;
-                var eastside_dnr_acres = 0;
-                var fires = [];
-                var ac_dict = {};
-                var eastside_regions = ["NORTHEAST", "SOUTHEAST"];
-                for (i in results.features) {
-                    // basic summary calcs
-                    var region = results.features[i].attributes.REGION_NAME
-                    if (eastside_regions.includes(region)) {
-                        eastside_acres += results.features[i].attributes.ACRES_BURNED;       
-                        eastside_responses += 1
-                    } else {
-                        westside_acres += results.features[i].attributes.ACRES_BURNED;  
-                        westside_responses += 1
-                    }
-                    // dnr fire calcs
-                    if ((results.features[i].attributes.PROTECTION_TYPE != 'DNR Assist Other Agency' && results.features[i].attributes.FIREEVNT_CLASS_LABEL_NM == 'Classified')) {
-                        if (eastside_regions.includes(region)) {
-                            eastside_dnr_acres += results.features[i].attributes.ACRES_BURNED;       
-                            eastside_dnr_responses += 1
-                        } else {
-                            westside_dnr_acres += results.features[i].attributes.ACRES_BURNED;  
-                            westside_dnr_responses += 1
-                        }
-                        month = moment(results.features[i].attributes.DSCVR_DT).format('MMMM')
-                        prot_type = results.features[i].attributes.PROTECTION_TYPE
-                        acres = results.features[i].attributes.ACRES_BURNED
-                        county = results.features[i].attributes.COUNTY_LABEL_NM
-                        cause = results.features[i].attributes.FIREGCAUSE_LABEL_NM
-                        date_delta = moment().diff(moment(results.features[i].attributes.DSCVR_DT), 'days')
-                        fires.push([month, prot_type, acres, county, cause, date_delta])
-                        if (!ac_dict[month]) {
-                            ac_dict[month] = [];
-                        }
-                        ac_dict[month].push(acres);
-                    }
-                }
-                for (i in ac_dict) {
-                    ac_dict[i] = ac_dict[i].reduce(function (acc, val) { return acc + val; }, 0).toFixed(2)
+                var region_intel_data = results["features"];
+                // gather region objects
+                var se_region_obj = region_intel_data.filter(a => a.attributes.region == "SE_Region")[0];
+                var ne_region_obj = region_intel_data.filter(a => a.attributes.region == "NE_Region")[0];
+                var nw_region_obj = region_intel_data.filter(a => a.attributes.region == "NW_Region")[0];
+                var sps_region_obj = region_intel_data.filter(a => a.attributes.region == "SPS_Region")[0];
+                var pc_region_obj = region_intel_data.filter(a => a.attributes.region == "PC_Region")[0];
+                var oly_region_obj = region_intel_data.filter(a => a.attributes.region == "OLY_Region")[0];
 
-                }
+                // set SE Region
+                $("#se_engines_in_region").text(se_region_obj["attributes"]["engines_in_region"]);
+                $("#se_crews_in_region").text(se_region_obj["attributes"]["crews_in_region"]);
+                $("#se_engines_out_region").text(se_region_obj["attributes"]["engines_available_for_out"]);
+                $("#se_crews_out_region").text(se_region_obj["attributes"]["crews_available_for_out"]);
 
-                months = []
-                causes = []
-                counties = []
-                for (i in fires) {
-                    months.push(fires[i][0])
-                    causes.push(fires[i][4])
-                }
+                // set NE Region
+                $("#ne_engines_in_region").text(ne_region_obj["attributes"]["engines_in_region"]);
+                $("#ne_crews_in_region").text(ne_region_obj["attributes"]["crews_in_region"]);
+                $("#ne_engines_out_region").text(ne_region_obj["attributes"]["engines_available_for_out"]);
+                $("#ne_crews_out_region").text(ne_region_obj["attributes"]["crews_available_for_out"]);
 
-                mo = createFreqArray(months)
-                causes = createFreqArray(causes)
+                // set NW Region
+                $("#nw_engines_in_region").text(nw_region_obj["attributes"]["engines_in_region"]);
+                $("#nw_crews_in_region").text(nw_region_obj["attributes"]["crews_in_region"]);
+                $("#nw_engines_out_region").text(nw_region_obj["attributes"]["engines_available_for_out"]);
+                $("#nw_crews_out_region").text(nw_region_obj["attributes"]["crews_available_for_out"]);
 
-                data = {
-                    datasets: [{
-                        backgroundColor: ["#a6cee3", "#1f78b4", "#b2df8a", "#33a02c", "#e31a1c", "#fb9a99", "#fdbf6f", "#ff7f00", "#cab2d6", "#6a3d9a"],
-                        data: Object.values(causes),
-                    }],
-                    labels: Object.keys(causes)
-                };
+                // set SPS Region
+                $("#sps_engines_in_region").text(sps_region_obj["attributes"]["engines_in_region"]);
+                $("#sps_crews_in_region").text(sps_region_obj["attributes"]["crews_in_region"]);
+                $("#sps_engines_out_region").text(sps_region_obj["attributes"]["engines_available_for_out"]);
+                $("#sps_crews_out_region").text(sps_region_obj["attributes"]["crews_available_for_out"]);
 
+                // set PC Region
+                $("#pc_engines_in_region").text(pc_region_obj["attributes"]["engines_in_region"]);
+                $("#pc_crews_in_region").text(pc_region_obj["attributes"]["crews_in_region"]);
+                $("#pc_engines_out_region").text(pc_region_obj["attributes"]["engines_available_for_out"]);
+                $("#pc_crews_out_region").text(pc_region_obj["attributes"]["crews_available_for_out"]);
 
-                // set table text
-                // westside
-                $("#westside_responses").text(pretty_num(westside_responses));
-                $("#westside_acres").text(pretty_num(westside_acres, true));
-                $("#westside_dnr_responses").text(pretty_num(westside_dnr_responses));
-                $("#westside_dnr_acres").text(pretty_num(westside_dnr_acres, true));
-                // eastside
-                $("#eastside_responses").text(pretty_num(eastside_responses));
-                $("#eastside_acres").text(pretty_num(eastside_acres, true));
-                $("#eastside_dnr_responses").text(pretty_num(eastside_dnr_responses));
-                $("#eastside_dnr_acres").text(pretty_num(eastside_dnr_acres, true));
-                // all-totals
-                $("#total_responses").text(pretty_num(westside_responses+eastside_responses));
-                $("#total_acres").text(pretty_num(westside_acres+eastside_acres, true));
-                $("#total_dnr_responses").text(pretty_num(westside_responses+eastside_dnr_responses));
-                $("#total_dnr_acres").text(pretty_num(westside_dnr_acres+eastside_dnr_acres, true));
-                
-                $('.loader').removeClass("is-active");
+                // set OLY Region
+                $("#oly_engines_in_region").text(oly_region_obj["attributes"]["engines_in_region"]);
+                $("#oly_crews_in_region").text(oly_region_obj["attributes"]["crews_in_region"]);
+                $("#oly_engines_out_region").text(oly_region_obj["attributes"]["engines_available_for_out"]);
+                $("#oly_crews_out_region").text(oly_region_obj["attributes"]["crews_available_for_out"]);
+
+                // set Totals
+                $("#total_engines_in_region").text(region_intel_data.sum("engines_in_region"));
+                $("#total_crews_in_region").text(region_intel_data.sum("crews_in_region"));
+                $("#total_engines_out_region").text(region_intel_data.sum("engines_available_for_out"));
+                $("#total_crews_out_region").text(region_intel_data.sum("crews_available_for_out"));
+
             }
         });
+        $.getJSON({
+            type: "GET",
+            async: true,
+            url: 'https://services.arcgis.com/4x406oNViizbGo13/ArcGIS/rest/services/survey123_84d0adc6ab6b4e51abbd0e782e0e5169_stakeholder/FeatureServer/0/query?where=1%3D1&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&returnGeodetic=false&outFields=*&returnHiddenFields=false&returnGeometry=false&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=1&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pjson&token=',
+            success: function (results) {
+                // only returns one record
+                var aviation_intel_data = results["features"][0]["attributes"];
+                
+                // set Aviation variables
+                $("#westside_helicopters").text(aviation_intel_data["westside_helicopters"]);
+                $("#westside_seats").text(aviation_intel_data["westside_seats"]);
+                $("#westside_air_attack_recon").text(aviation_intel_data["westside_air_attack_recon"]);
+                $("#eastside_helicopters").text(aviation_intel_data["eastside_helicopters"]);
+                $("#eastside_seats").text(aviation_intel_data["eastside_seats"]);
+                $("#eastside_air_attack_recon").text(aviation_intel_data["eastside_air_attack_recon"]);
+                $("#in_region_lats").text(aviation_intel_data["in_region_lats"]);
+                $("#in_region_vlats").text(aviation_intel_data["in_region_vlats"]);
+
+                // set Aviation Totals
+                $("#total_rotors").text(aviation_intel_data["eastside_helicopters"]+aviation_intel_data["westside_helicopters"]);
+                $("#total_seats").text(aviation_intel_data["eastside_seats"]+aviation_intel_data["westside_seats"]);
+                $("#total_air_attack_recon").text(aviation_intel_data["eastside_air_attack_recon"]+aviation_intel_data["westside_air_attack_recon"]);
+                $("#total_in_region_lats").text(aviation_intel_data["in_region_lats"]);
+                $("#total_in_region_vlats").text(aviation_intel_data["in_region_vlats"]);
+            }
+        });
+
+        $('.loader').removeClass("is-active");
     </script>
 </body>
 
