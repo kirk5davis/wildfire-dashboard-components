@@ -13,21 +13,25 @@
     <link rel="stylesheet"
         href="https://s3-us-west-1.amazonaws.com/patterns.esri.com/files/calcite-web/1.2.5/css/calcite-web.min.css">
     <style>
-        hr{
-        padding: 0px;
-        margin: 0px;
+        hr {
+            padding: 0px;
+            margin: 0px;
         }
-        #grid-container{
+
+        #grid-container {
             min-height: 100%;
         }
-        h5{
+
+        h5 {
             margin-top: 10px;
             font-weight: bold;
         }
-        #hidden{
+
+        #hidden {
             display: none;
         }
-        th{
+
+        th {
             font-weight: bold;
         }
     </style>
@@ -38,7 +42,7 @@
     <div class="grid-container leader-0">
         <div class='column-24'>
             <h5><i class="icon-ui-table"></i>Ground Resources<i class="fa-solid fa-clipboard"></i></h5>
-            <div class="loader is-active" >
+            <div class="loader is-active">
                 <div class="loader-bars"></div>
             </div>
             <div class="overflow-auto">
@@ -108,7 +112,8 @@
                         </tr>
                     </tbody>
                 </table>
-                <a class="font-size--3" href="https://www.dnr.wa.gov/FightingFire" target="_blank">Learn more about DNR's engines and crews <i class="icon-ui-link-external"></i></a>
+                <a class="font-size--3" href="https://www.dnr.wa.gov/FightingFire" target="_blank">Learn more about
+                    DNR's engines and crews <i class="icon-ui-link-external"></i></a>
             </div>
         </div>
         <div class='column-24 leader-1'>
@@ -118,7 +123,7 @@
     <div class="grid-container leader-0">
         <div class='column-24'>
             <h5><i class="icon-ui-compass"></i>Aviation Resources</h5>
-            <div class="loader is-active" >
+            <div class="loader is-active">
                 <div class="loader-bars"></div>
             </div>
             <div class="overflow-auto">
@@ -166,10 +171,11 @@
                             <td class="text-center" id="total_in_region_lats">---</td>
                             <td class="text-center" id="total_in_region_vlats">---</td>
                         </tr>
-                        
+
                     </tbody>
                 </table>
-                <a class="font-size--3" href="https://www.dnr.wa.gov/Aviation" target="_blank">Learn more about DNR's aviation program <i class="icon-ui-link-external"></i></a>
+                <a class="font-size--3" href="https://www.dnr.wa.gov/Aviation" target="_blank">Learn more about DNR's
+                    aviation program <i class="icon-ui-link-external"></i></a>
             </div>
         </div>
     </div>
@@ -181,14 +187,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
 
     <!-- Calcite Web -->
-    <script src="https://s3-us-west-1.amazonaws.com/patterns.esri.com/files/calcite-web/1.2.5/js/calcite-web.min.js"></script>
-    
+    <script
+        src="https://s3-us-west-1.amazonaws.com/patterns.esri.com/files/calcite-web/1.2.5/js/calcite-web.min.js"></script>
+
     <!-- Build Tables -->
     <script>
 
         Array.prototype.sum = function (prop) {
             var total = 0
-            for ( var i = 0, _len = this.length; i < _len; i++ ) {
+            for (var i = 0, _len = this.length; i < _len; i++) {
                 total += this[i]['attributes'][prop]
             }
             return total
@@ -260,7 +267,7 @@
             success: function (results) {
                 // only returns one record
                 var aviation_intel_data = results["features"][0]["attributes"];
-                
+
                 // set Aviation variables
                 $("#westside_helicopters").text(aviation_intel_data["westside_helicopters"]);
                 $("#westside_seats").text(aviation_intel_data["westside_seats"]);
@@ -272,9 +279,9 @@
                 $("#in_region_vlats").text(aviation_intel_data["in_region_vlats"]);
 
                 // set Aviation Totals
-                $("#total_rotors").text(aviation_intel_data["eastside_helicopters"]+aviation_intel_data["westside_helicopters"]);
-                $("#total_seats").text(aviation_intel_data["eastside_seats"]+aviation_intel_data["westside_seats"]);
-                $("#total_air_attack_recon").text(aviation_intel_data["eastside_air_attack_recon"]+aviation_intel_data["westside_air_attack_recon"]);
+                $("#total_rotors").text(aviation_intel_data["eastside_helicopters"] + aviation_intel_data["westside_helicopters"]);
+                $("#total_seats").text(aviation_intel_data["eastside_seats"] + aviation_intel_data["westside_seats"]);
+                $("#total_air_attack_recon").text(aviation_intel_data["eastside_air_attack_recon"] + aviation_intel_data["westside_air_attack_recon"]);
                 $("#total_in_region_lats").text(aviation_intel_data["in_region_lats"]);
                 $("#total_in_region_vlats").text(aviation_intel_data["in_region_vlats"]);
             }

@@ -16,21 +16,25 @@
     <link rel="stylesheet"
         href="https://s3-us-west-1.amazonaws.com/patterns.esri.com/files/calcite-web/1.2.5/css/calcite-web.min.css">
     <style>
-        hr{
-        padding: 0px;
-        margin: 0px;
+        hr {
+            padding: 0px;
+            margin: 0px;
         }
-        #grid-container{
+
+        #grid-container {
             min-height: 100%;
         }
-        h5{
+
+        h5 {
             margin-top: 10px;
             font-weight: bold;
         }
-        #hidden{
+
+        #hidden {
             display: none;
         }
-        th{
+
+        th {
             font-weight: bold;
         }
     </style>
@@ -41,7 +45,7 @@
     <div class="grid-container leader-0">
         <div class='column-24'>
             <h5><i class="icon-ui-table"></i>Summary</h5>
-            <div class="loader is-active" >
+            <div class="loader is-active">
                 <div class="loader-bars"></div>
             </div>
             <div class="overflow-auto">
@@ -77,7 +81,7 @@
                             <td class="text-center" id="total_dnr_responses">---</td>
                             <td class="text-center" id="total_dnr_acres">---</td>
                         </tr>
-                        
+
                     </tbody>
                 </table>
             </div>
@@ -129,18 +133,19 @@
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
 
     <!-- Calcite Web -->
-    <script src="https://s3-us-west-1.amazonaws.com/patterns.esri.com/files/calcite-web/1.2.5/js/calcite-web.min.js"></script>
-    
+    <script
+        src="https://s3-us-west-1.amazonaws.com/patterns.esri.com/files/calcite-web/1.2.5/js/calcite-web.min.js"></script>
+
     <!-- Build Graphs -->
     <script>
         var defaultStart = new Date().getFullYear() + '-01-01'
 
-        function pretty_num(number, acres=false){
+        function pretty_num(number, acres = false) {
             nf = Intl.NumberFormat();
-            if (acres){
+            if (acres) {
                 return nf.format(Math.round(number)) + " ac."
             } else {
-            return nf.format(Math.round(number));
+                return nf.format(Math.round(number));
             }
         }
 
@@ -178,19 +183,19 @@
                     // basic summary calcs
                     var region = results.features[i].attributes.REGION_NAME
                     if (eastside_regions.includes(region)) {
-                        eastside_acres += results.features[i].attributes.ACRES_BURNED;       
+                        eastside_acres += results.features[i].attributes.ACRES_BURNED;
                         eastside_responses += 1
                     } else {
-                        westside_acres += results.features[i].attributes.ACRES_BURNED;  
+                        westside_acres += results.features[i].attributes.ACRES_BURNED;
                         westside_responses += 1
                     }
                     // dnr fire calcs
                     if ((results.features[i].attributes.PROTECTION_TYPE != 'DNR Assist Other Agency' && results.features[i].attributes.FIREEVNT_CLASS_LABEL_NM == 'Classified')) {
                         if (eastside_regions.includes(region)) {
-                            eastside_dnr_acres += results.features[i].attributes.ACRES_BURNED;       
+                            eastside_dnr_acres += results.features[i].attributes.ACRES_BURNED;
                             eastside_dnr_responses += 1
                         } else {
-                            westside_dnr_acres += results.features[i].attributes.ACRES_BURNED;  
+                            westside_dnr_acres += results.features[i].attributes.ACRES_BURNED;
                             westside_dnr_responses += 1
                         }
                         month = moment(results.features[i].attributes.DSCVR_DT).format('MMMM')
@@ -426,7 +431,7 @@
                                 align: 'end',
                                 offset: -5,
                                 // display: 'auto',
-                                formatter: function(value, context) {
+                                formatter: function (value, context) {
                                     return pretty_num(value);
                                 }
                             }
@@ -446,11 +451,11 @@
                 $("#eastside_dnr_responses").text(pretty_num(eastside_dnr_responses));
                 $("#eastside_dnr_acres").text(pretty_num(eastside_dnr_acres, true));
                 // all-totals
-                $("#total_responses").text(pretty_num(westside_responses+eastside_responses));
-                $("#total_acres").text(pretty_num(westside_acres+eastside_acres, true));
-                $("#total_dnr_responses").text(pretty_num(westside_responses+eastside_dnr_responses));
-                $("#total_dnr_acres").text(pretty_num(westside_dnr_acres+eastside_dnr_acres, true));
-                
+                $("#total_responses").text(pretty_num(westside_responses + eastside_responses));
+                $("#total_acres").text(pretty_num(westside_acres + eastside_acres, true));
+                $("#total_dnr_responses").text(pretty_num(westside_responses + eastside_dnr_responses));
+                $("#total_dnr_acres").text(pretty_num(westside_dnr_acres + eastside_dnr_acres, true));
+
                 $('.loader').removeClass("is-active");
             }
         });
