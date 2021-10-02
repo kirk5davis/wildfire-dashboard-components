@@ -62,3 +62,29 @@ return {
       // attribute2: ''
     // }
   }
+
+  return {
+    textColor:'white',
+    backgroundColor:  When(Number($datapoint["type_3_teams_assigned"]) == 0, '#218c71', (Number($datapoint["type_3_teams_assigned"]) > 0 &&  Number($datapoint["type_3_teams_assigned"]) < 3), '#F1B34D', Number($datapoint["type_3_teams_assigned"]) >= 3, '#CA304B', '#dee2e6'),  
+    //topText: '',
+    //topTextColor: '',
+    //topTextOutlineColor: '',
+    //topTextMaxSize: 'medium',
+    middleText:$datapoint["type_3_teams_assigned"],
+    //middleTextColor: 'white',
+    middleTextOutlineColor: '',
+    middleTextMaxSize: 'large',
+    bottomText: 'Type 3',
+    //bottomTextColor: 'white',
+    //bottomTextOutlineColor: '',
+    bottomTextMaxSize: 'small',
+    //iconName:'',
+    //iconAlign:'left',
+    //iconColor:'',
+    //iconOutlineColor:'',
+    //noValue:false,
+    //attributes: {
+      // attribute1: '',
+      // attribute2: ''
+    // }
+  }
